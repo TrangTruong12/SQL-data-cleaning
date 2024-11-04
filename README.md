@@ -96,6 +96,17 @@ END
 |MENDIE ALEXANDRESCU|46|single|malexandrescu8@state.gov|504-918-4753|34 Delladonna Terrace,New Orleans,Louisiana|Systems Administrator III|3/12/1921|
 |FEY KLOSS|52|married|fkloss9@godaddy.com|808-177-0318|8976 Jackson Park,Honolulu,Hawaii|Chemical Engineer|11/5/2014|
 
+## Clean table has no duplicates anymore
+
+SELECT *
+FROM club_member_info_cleaned cmic 
+WHERE membership_date in (
+	SELECT MIN(membership_date)	
+	FROM club_member_info_cleaned cmic 
+	GROUP BY email
+)
+
+
 
 
  
